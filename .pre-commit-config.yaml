@@ -1,0 +1,90 @@
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v3.2.0
+    hooks:
+      - id: end-of-file-fixer
+      - id: trailing-whitespace
+      - id: debug-statements
+      - id: check-merge-conflict
+  - repo: https://github.com/IamTheFij/docker-pre-commit
+    rev: v2.0.0
+    hooks:
+      - id: hadolint
+  - repo: local
+    hooks:
+      - id: pytest
+        name: Tests
+        entry: poetry run pytest
+        language: system
+        pass_filenames: false
+        always_run: true
+      - id: pydocstyle
+        name: DocStyle
+        description: "Pydocstyle is a static analysis tool for checking compliance with Python docstring conventions"
+        entry: poetry run pydocstyle
+        args:
+          [
+            "--ignore=D100,D101,D102,D103,D104,D105,D106,D107,D213,D203,D407,D406,D413",
+          ]
+        language: system
+        types: [python]
+        exclude: ^migrations/
+      - id: black
+        name: Black
+        description: "Black: The uncompromising Python code formatter"
+        entry: poetry run black
+        args: [--line-length=100]
+        language: system
+        require_serial: true
+        types: [python]
+        exclude: ^migrations/
+      - id: isort
+        name: Reorder python imports
+        description: "This hook reorders imports in python files."
+        entry: poetry run isort
+        args: [--force-single-line-imports]
+        require_serial: true
+        language: system
+        types: [python]
+        exclude: ^migrations/
+      - id: flake8
+        name: Flake8
+        description: "`flake8` is a command-line utility for enforcing style consistency across Python projects."
+        entry: poetry run flake8
+        args:
+          [
+            --max-line-length=100,
+            --max-complexity=12,
+            --max-cognitive-complexity=15,
+          ]
+        language: system
+        require_serial: true
+        types: [python]
+        exclude: ^migrations/
+      - id: safety
+        name: Dependecies security
+        entry: poetry run safety check
+        pass_filenames: false
+        language: system
+      - id: bandit
+        name: Python security
+        entry: poetry run bandit
+        args: [-l, --recursive, --exclude=tests]
+        pass_filenames: true
+        language: system
+        types: [python]
+      - id: mypy
+        name: Python typing
+        entry: poetry run mypy
+        args: ["--ignore-missing-imports"]
+        pass_filenames: true
+        exclude: ^migrations/
+        language: system
+        types: [python]
+      - id: check-poetry
+        name: Poetry check
+        description: Validates the structure of the pyproject.toml file
+        entry: poetry check
+        language: system
+        pass_filenames: false
+        files: pyproject.toml
