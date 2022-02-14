@@ -34,25 +34,6 @@ def run_gunicorn_server():
         wsgi_server.run()
 
 
-# def init_db():
-#     from app.db import db_connection
-#     from app.models import Base
-
-#     Base.metadata.create_all(db_connection.engine)
-
-
-# def migrate():
-#     import alembic.config
-
-#     alembic.config.main(
-#         argv=[
-#             "--raiseerr",
-#             "upgrade",
-#             "head",
-#         ]
-#     )
-
-
 if __name__ == "__main__":
     command_map = {
         "runserver": run_server,
