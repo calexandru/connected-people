@@ -37,7 +37,7 @@ class TwitterClient:
             logger.error(
                 "Failed to fetch details for Twitter user '%s'. Reason: %s", user_handler, ex
             )
-            raise GenericException(f"ailed to fetch details for twiter user {user_handler}")
+            raise GenericException(f"failed to fetch details for twiter user {user_handler}")
 
     def check_user_follows(self, user_handler: str, follow_handler: str) -> bool:
         """Find if a user follows another user on Twitter.

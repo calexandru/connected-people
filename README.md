@@ -71,6 +71,10 @@ For a clean development and to ensure the quality of the code commits it is high
 
 ``poetry run pre-commit run --all-files``
 
+## Run the api locally from the codebase
+
+``poetry run server``
+
 ## Run the api's Docker image locally
 
 Typically, one would release the api and would run the Docker image generated via the build system.
@@ -84,8 +88,9 @@ To start dependency services (mongo):
 ``docker-compose up -d``
 
 To run the image use:
+> note:: Once Mongo service is running that service can be access in the newly created network "ntw-connection"
 
-``docker run -p 5000:5000 -e MONGO_HOST=<mongo ip> -e TWITTER_ACCESS_TOKEN=<token> connection_api:latest``
+``docker run -p 5000:5000 --network=ntw-connection -e MONGO_HOST=mongodb -e TWITTER_ACCESS_TOKEN=<token> connection_api:latest``
 
 ## Test cases
 
@@ -99,7 +104,7 @@ http://localhost:5000/connected/realtime/calexandru/gvanrossum
 
 To see history of the api call:
 
-http://localhost:5000/connected/register/dstufftss/gvanrossum
+http://localhost:5000/connected/register/dstufft/gvanrossum
 
 ## Release
 
