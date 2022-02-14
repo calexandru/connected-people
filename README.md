@@ -71,6 +71,10 @@ For a clean development and to ensure the quality of the code commits it is high
 
 ``poetry run pre-commit run --all-files``
 
+## Run the api locally from the codebase
+
+``poetry run server``
+
 ## Run the api's Docker image locally
 
 Typically, one would release the api and would run the Docker image generated via the build system.

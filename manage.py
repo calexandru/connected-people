@@ -38,11 +38,9 @@ if __name__ == "__main__":
     command_map = {
         "runserver": run_server,
         "gunicornserver": run_gunicorn_server,
-        # "initdb": init_db,
-        # "migrate": migrate,
     }
     parser = argparse.ArgumentParser(
-        prog="manage.py", description="This is the main entrypoint to manage MarsAPI"
+        prog="manage.py", description="This is the main entrypoint to the API"
     )
     parser.add_argument(
         "command", type=str, choices=command_map.keys(), help="what command would you like to run?"
