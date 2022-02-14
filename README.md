@@ -84,8 +84,9 @@ To start dependency services (mongo):
 ``docker-compose up -d``
 
 To run the image use:
+> note:: Once Mongo service is running that service can be access in the newly created network "ntw-connection"
 
-``docker run -p 5000:5000 -e MONGO_HOST=<mongo ip> -e TWITTER_ACCESS_TOKEN=<token> connection_api:latest``
+``docker run -p 5000:5000 --network=ntw-connection -e MONGO_HOST=mongodb -e TWITTER_ACCESS_TOKEN=<token> connection_api:latest``
 
 ## Test cases
 
