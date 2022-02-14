@@ -100,7 +100,7 @@ http://localhost:5000/connected/realtime/calexandru/gvanrossum
 
 To see history of the api call:
 
-http://localhost:5000/connected/register/dstufftss/gvanrossum
+http://localhost:5000/connected/register/dstufft/gvanrossum
 
 ## Release
 
