@@ -29,10 +29,6 @@ def run_gunicorn_server():
         def init(self, parser, opts, args):
             return
 
-    if __name__ == "__main__":
-        wsgi_server = GunicornApplication()
-        wsgi_server.run()
-
 
 if __name__ == "__main__":
     command_map = {

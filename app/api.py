@@ -16,7 +16,7 @@ mongo_client = MongoClient(flask_app, settings.MONGO_URI)
 
 @flask_app.get("/health")
 def health():
-    stats = {"status": "running", "server_date": datetime.datetime.now()}
+    stats = {"status": "running", "server_date": datetime.now()}
     if settings.APP_VERSION:
         stats["version"] = settings.APP_VERSION
     return stats

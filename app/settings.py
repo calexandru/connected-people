@@ -32,13 +32,6 @@ LOGGING = {
             "class": "logging.NullHandler",
         },
     },
-    "loggers": {
-        "worker": {
-            "handlers": ["console"],
-            "level": LOG_LEVEL,
-            "propagate": False,
-        }
-    },
     "root": {"handlers": ["console"], "level": LOG_LEVEL},
 }
 dictConfig(LOGGING)
